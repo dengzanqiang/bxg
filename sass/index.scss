@@ -1,0 +1,69 @@
+// * {
+//   margin: 0;
+//   padding: 0;
+// }
+//侧边栏
+.aside {
+  width: 200px;
+  height: 100%;
+  background-color: yellowgreen;
+  position: fixed;
+  left: 0;
+  top: 0;
+}
+//用户名头像
+.profile-container {
+  padding-top: 30px;
+  .img-container {
+    text-align: center;
+    .img-circle {
+          width: 100px;
+           height: 100px;
+           display: inline-block;
+    }
+  }
+  .text-center{
+    font: 26px "华文行楷";
+    color: black;
+    
+  }
+}
+//主体内容
+.content-container {
+  height: 100%;
+  position: absolute;
+  background-color: pink;
+  left: 200px;
+  right: 0;
+  //头部
+  .top{
+    line-height: 46px;
+    margin: 0;
+    font-size: 18px;
+    border-radius:0;
+    .panel-body{
+      padding:0 10px;
+      .container{
+        width: 100%;
+      }
+    }
+  }
+  
+  .menu-content-container{
+      height: 100%;
+      width: 100%;
+      background-color: bisque;
+      .panel{
+      height: 100%;
+      width: 100%;
+        box-sizing: border-box;
+       margin-bottom:0;
+      //  margin-right: 0;
+      //  margin-left: 0;
+      }
+      .table-bordered>tbody>tr>td{
+        line-height: 40px;
+      }
+      
+  }
+}

@@ -1,0 +1,59 @@
+@charset "UTF-8";
+.aside {
+  width: 200px;
+  height: 100%;
+  background-color: yellowgreen;
+  position: fixed;
+  left: 0;
+  top: 0;
+}
+
+.profile-container {
+  padding-top: 30px;
+}
+.profile-container .img-container {
+  text-align: center;
+}
+.profile-container .img-container .img-circle {
+  width: 100px;
+  height: 100px;
+  display: inline-block;
+}
+.profile-container .text-center {
+  font: 26px "华文行楷";
+  color: black;
+}
+
+.content-container {
+  height: 100%;
+  position: absolute;
+  background-color: pink;
+  left: 200px;
+  right: 0;
+}
+.content-container .top {
+  line-height: 46px;
+  margin: 0;
+  font-size: 18px;
+  border-radius: 0;
+}
+.content-container .top .panel-body {
+  padding: 0 10px;
+}
+.content-container .top .panel-body .container {
+  width: 100%;
+}
+.content-container .menu-content-container {
+  height: 100%;
+  width: 100%;
+  background-color: bisque;
+}
+.content-container .menu-content-container .panel {
+  height: 100%;
+  width: 100%;
+  box-sizing: border-box;
+  margin-bottom: 0;
+}
+.content-container .menu-content-container .table-bordered > tbody > tr > td {
+  line-height: 40px;
+}
