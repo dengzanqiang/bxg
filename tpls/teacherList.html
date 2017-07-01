@@ -6,7 +6,7 @@
     </ol>
     <div class="row">
       <div class="col-md-1 col-md-offset-10">
-        <button class="btn btn-danger">添加讲师</button>
+        <button class="btn btn-danger teacherAdd">添加讲师</button>
       </div>
     </div>
     <table class="table table-bordered table-hover">
@@ -42,8 +42,8 @@
           <td>{{userInfo.tc_birthday}}</td>
           <td>{{userInfo.tc_join_date}}</td>
           <td tc_id="{{userInfo.tc_id}}" tc_status="{{userInfo.tc_status}}">
-            <button class="btn btn-success btn-primary">查看</button>
-            <button class="btn btn-primary">编辑</button>
+            <button class="btn btn-success btn-look">查看</button>
+            <button class="btn btn-edit">编辑</button>
             <button class="btn btn-info btn-status">{{userInfo.tc_status==0?"注销":"启用"}}</button>
           </td>
         </tr>

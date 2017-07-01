@@ -5,6 +5,7 @@ require.config({
         jquery: "lib/jquery-2.1.4",
         cookie: "lib/jquery.cookie",
         bootstrap: "../assets/bootstrap/js/bootstrap",
+        datetimepicker: "../assets/bootstrap-datetimepicker-master/js/bootstrap-datetimepicker",
         list:"teacher/list",
         text:"lib/text",
         tpls:"../tpls",
@@ -17,15 +18,15 @@ require.config({
     }
 })
 
-require(["jquery","list", "cookie", "bootstrap"], function ($,teacherlist) {
+require(["jquery","list", "cookie", "bootstrap","datetimepicker"], function ($,teacherlist) {
     var userInfoStr = $.cookie("userInfo");
     // console.log(userInfoStr);
     if (!userInfoStr) {
         location.href = "login.html";
     }
     var userInfo = JSON.parse(userInfoStr);
-    console.log(userInfo);
-    console.log(userInfo.tc_avatar);
+    // console.log(userInfo);
+    // console.log(userInfo.tc_avatar);
     //2.更新页面头像
     $(".profile-container .img-circle").attr("src", userInfo.tc_avatar);
     $(".profile-container .text-center").text(userInfo.tc_name);
