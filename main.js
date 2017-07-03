@@ -7,6 +7,7 @@ require.config({
         bootstrap: "../assets/bootstrap/js/bootstrap",
         datetimepicker: "../assets/bootstrap-datetimepicker-master/js/bootstrap-datetimepicker",
         list:"teacher/list",
+        cgList:"category/cgList",
         text:"lib/text",
         tpls:"../tpls",
         arttemplate:"lib/template-web"
@@ -18,7 +19,7 @@ require.config({
     }
 })
 
-require(["jquery","list", "cookie", "bootstrap","datetimepicker"], function ($,teacherlist) {
+require(["jquery","list","cgList","cookie", "bootstrap","datetimepicker"], function ($,teacherlist,cgList) {
     var userInfoStr = $.cookie("userInfo");
     // console.log(userInfoStr);
     if (!userInfoStr) {
@@ -39,7 +40,7 @@ require(["jquery","list", "cookie", "bootstrap","datetimepicker"], function ($,t
         } else if ($(this).hasClass("btn-course")) {
             $(".menu-content-container").html("<h1 style='margin:0'>课程管理</h1>")
         } else if ($(this).hasClass("btn-cours-category")) {
-            $(".menu-content-container").html("<h1 style='margin:0'>课程分类</h1>")
+            cgList();
         } else if ($(this).hasClass("btn-chart")) {
             $(".menu-content-container").html("<h1 style='margin:0'>图表统计</h1>")
         }

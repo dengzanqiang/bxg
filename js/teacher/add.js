@@ -11,18 +11,23 @@ define(["jquery", "text!tpls/teacherAdd.html", "bootstrap"], function ($, teache
                 console.log(formData);
                 $.post("api/teacher/add", formData, function (res) {
                     if (res.code !== 200) throw new Error(res.msg);
-                       alert("提交了")
-                    // $teacherAdd.modal("hide");
-                    // $(".aside .list-group button.btn-teacher").trigger("click");
+                    $teacherAdd.modal("hide");
+                    $(".aside .list-group button.btn-teacher").trigger("click");
                 })
 
                 return false;
             })
             .appendTo("body").modal();
 
-        $('.datetimepicker').datetimepicker({
-            format: 'yyyy-mm-dd',
-            autoclose: true
+        $teacherAdd.find('.datetimepicker').datetimepicker({
+                weekStart:1,//一周从哪一天开始。0（星期日）到6（星期六）
+                format: 'yyyy-mm-dd',
+                //daysOfWeekDisabled:[0,1,2]  //指定周几不能使用
+                autoclose:true,
+                minView:"month",
+                todayBtn:true,
+                todayHighlight:true,
+                language:"zh-CN"
         });
 
     }

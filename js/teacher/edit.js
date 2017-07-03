@@ -6,7 +6,6 @@ define(["jquery","text!tpls/teacherEdit.html","arttemplate","bootstrap"],functio
       // console.log(teacherAddTpl);
        $.get("api/teacher/edit",{tc_id},function (res){
            if(res.code!=200) throw new Error(res.msg);
-            console.log();
             var teacherEdit = art.render(teacherEditTpl,res.result);
 
         var $teacherEdit= $(teacherEdit)
