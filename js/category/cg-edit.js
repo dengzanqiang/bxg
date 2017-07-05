@@ -9,7 +9,7 @@ define(["jquery", "text!tpls/categoryEdit.html", "arttemplate", "bootstrap"], fu
       cg_id:cg_id
     }, function (res) {
       if (res.code != 200) throw new Error(res.msg);
-      // console.log(res);
+      console.log(res);
       var result =res.result;
       console.log(result);
       var categoryEdit = art.render(categoryEditTpl,{result:result});

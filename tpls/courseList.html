@@ -1,0 +1,49 @@
+<div class="panel panel-default courseList-container">
+  <div class="panel-body">
+    <ol class="breadcrumb">
+      <li><a href="#">课程管理</a></li>
+      <li class="active">管理列表</li>
+    </ol>
+    <ul class="list-group">
+      {{each result csMg index}}
+      {{if index%2==0}}
+      <li class="list-group-item-danger" style="list-style:none;padding:5px 0;box-shadow:6px -6px 10px  #666;margin-bottom:16px">
+        <div class="media">
+          <div class="media-left">
+            <a cs_id="{{csMg.cs_id}}" href="javasciipt:void(0)">
+              <img style="width:200px; height:120px" class="media-object imgupload" src="{{csMg.cs_cover}}">
+            </a>
+          </div>
+          <div class="media-body">
+            <h4 class="media-heading" cs_id="{{csMg.cs_id}}" >{{csMg.cs_name}}
+              <input type="button" class="btn btn-success btn-edit-time" value="课时管理">
+              <input type="button" class="btn btn-info btn-edit-info" value="课程基本信息">
+            </h4>
+            <div>----讲师:{{csMg.tc_name}}</div>
+            <div>----分类:{{csMg.cg_name}}</div>
+          </div>
+        </div>
+      </li>
+      {{else}}
+            <li class="list-group-item-info" style="list-style:none;padding:5px 0;box-shadow:6px -6px 10px  #666;margin-bottom:16px">
+        <div class="media">
+          <div class="media-left">
+            <a cs_id="{{csMg.cs_id}}" href="javasciipt:void(0)">
+              <img style="width:200px; height:120px" class="media-object imgupload" src="{{csMg.cs_cover}}">
+            </a>
+          </div>
+          <div class="media-body">
+            <h4 class="media-heading" cs_id="{{csMg.cs_id}}">{{csMg.cs_name}}
+              <input type="button" class="btn btn-success btn-edit-time" value="课时管理">
+              <input type="button" class="btn btn-info btn-edit-info" value="课程基本信息">
+            </h4>
+            <div>----讲师:{{csMg.tc_name}}</div>
+            <div>----分类:{{csMg.cg_name}}</div>
+          </div>
+        </div>
+      </li>
+      {{/if}}
+      {{/each}}
+    </ul>
+  </div>
+</div>
