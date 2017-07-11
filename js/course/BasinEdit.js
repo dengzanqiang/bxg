@@ -6,9 +6,7 @@ define([
 ], function ($, courseBasinEditTPL, art, api) {
   return function (cs_id) {
     // alert(courseBasinEditTPL);
-     $(".zombie-panel").addClass("cover");
     api.get("course/basic", {cs_id: cs_id}, function (res) {
-       $(".zombie-panel").removeClass("cover");
       var courseBasinEdit = art.render(courseBasinEditTPL, res.result);
       var $courseBasinEdit = $(courseBasinEdit)
         .on("submit", "form", function () {

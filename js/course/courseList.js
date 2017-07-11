@@ -7,12 +7,8 @@ define([
   'course/imgUpload'
 ], function ($, courseListTpl, art, api,BasinEdit,imgUpload) {
   return function () {
-     $(".zombie-panel").addClass("cover");
     api.get("course", {}, function (res) {
-       $(".zombie-panel").removeClass("cover");
       var courseList = art.render(courseListTpl, res);
-
-
       var $courseList = $(courseList)
         .on("click", ".btn-edit-time", function () {
           var cs_id = $(this).parent().attr("cs_id");

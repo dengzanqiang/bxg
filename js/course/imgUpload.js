@@ -7,9 +7,7 @@ define([
   'imgUpload'
 ], function($,art,api,courseImgUploadTpl) {
   return function(cs_id){
-     $(".zombie-panel").addClass("cover");
       api.get("course/picture",{cs_id:cs_id},function (res){
-         $(".zombie-panel").removeClass("cover");
         var courseImgUpload =art.render(courseImgUploadTpl,res.result);
         $(".menu-content-container").html(courseImgUpload);
 

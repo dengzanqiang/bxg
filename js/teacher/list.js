@@ -4,9 +4,7 @@ define(["jquery", "text!tpls/teacherList.html", "arttemplate","teacher/look","te
   //art art接受了arttemplate的返回值;
   return function () {
     //3个参数: url  data    success
-    $(".zombie-panel").addClass("cover");
     $.get("/api/teacher", {}, function (res) {
-    $(".zombie-panel").removeClass("cover");
       
       // console.log(res);
       //数据

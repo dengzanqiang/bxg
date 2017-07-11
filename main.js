@@ -6,13 +6,19 @@ require.config({
         cookie: "lib/jquery.cookie",
         bootstrap: "../assets/bootstrap/js/bootstrap",
         imgUpload:"../assets/uploadify/jquery.uploadify",
+        ueditorConfig:"../assets/ueditor/ueditor.config",
+        ueditorAll:"../assets/ueditor/ueditor.all",
+        ueditorlang:"../assets/ueditor/lang/zh-cn/zh-cn",
+        zeroClipboard:"../assets/ueditor/third-party/zeroclipboard/ZeroClipboard",
         datetimepicker: "../assets/bootstrap-datetimepicker-master/js/bootstrap-datetimepicker",
         list:"teacher/list",
         cgList:"category/cgList",
         courseList:"course/courseList",
         text:"lib/text",
         tpls:"../tpls",
-        arttemplate:"lib/template-web"
+        arttemplate:"lib/template-web",
+        chart:"chart",
+        echarts:'lib/echarts.min'
     },
     shim: {
         bootstrap: {
@@ -30,8 +36,56 @@ require(["jquery",
 "courseList",
 "course/add",
 "courseTime/list",
+"common/personal",
+"common/api",
+"chart",
+"ueditorlang",
+"echarts",
 "cookie", "bootstrap","datetimepicker"],
-function ($,teacherlist,cgList,courseList,courseAdd,courseTimeList) {
+function ($,teacherlist,cgList,courseList,courseAdd,courseTimeList,personal,api,chart) {
+    //设置AJAX的全局默认选项
+$.ajaxSetup( {
+    url: "/index.html" , // 默认URL
+    aysnc: false , // 默认同步加载
+    type: "POST" , // 默认使用POST方式
+    headers: { // 默认添加请求头
+        "Author": "CodePlayer" ,
+        "Powered-By": "CodePlayer"
+    } ,
+    error: function(jqXHR, textStatus, errorMsg){ // 出错时默认的处理函数
+        // jqXHR 是经过jQuery封装的XMLHttpRequest对象
+        // textStatus 可能为： null、"timeout"、"error"、"abort"或"parsererror"
+        // errorMsg 可能为： "Not Found"、"Internal Server Error"等
+
+        // 提示形如：发送AJAX请求到"/index.html"时出错[404]：Not Found
+        alert( '发送AJAX请求到"' + this.url + '"时出错[' + jqXHR.status + ']：' + errorMsg );        
+    },
+    beforeSend:function (){
+        $(".zombie-panel").addClass("cover")
+    }
+    ,
+    complete:function (jqXHR,code){
+        console.log(jqXHR);
+        $(".zombie-panel").removeClass("cover")
+    }
+} );
+
+
+
+
+    //0.退出登陆页面
+    
+        $(".link-out").on('click', function () {
+            //1服务器退出
+            api.post("logout",{},function (){
+                //2删除cookie
+                $.removeCookie('userInfo');
+                //3退出页面进入login页面
+                 location.href = "login.html";
+            })
+    });
+
+    //1登录页面
     var userInfoStr = $.cookie("userInfo");
     // console.log(userInfoStr);
     if (!userInfoStr) {
@@ -54,7 +108,7 @@ function ($,teacherlist,cgList,courseList,courseAdd,courseTimeList) {
         } else if ($(this).hasClass("btn-cours-category")) {
             cgList();//课程分类
         } else if ($(this).hasClass("btn-chart")) {
-            $(".menu-content-container").html("<h1 style='margin:0'>图表统计</h1>");//图表统计;
+            chart();//图表统计;
         }
     });
     
@@ -72,6 +126,8 @@ function ($,teacherlist,cgList,courseList,courseAdd,courseTimeList) {
         //课时管理
         courseTimeList(cs_id);
     })
-
-
+    //7://个人中心
+    $(".link-personal").on("click",function(){
+        personal();
+    })
 })
